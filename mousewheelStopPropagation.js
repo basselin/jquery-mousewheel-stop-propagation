@@ -8,9 +8,9 @@
 	'use strict';
 	
 	$.fn.mousewheelStopPropagation = function(options) {
-		// defaults
 		options = $.extend({
-			wheelstop: null
+			// defaults
+			wheelstop: null // Function
 			}, options);
 		
 		var docElt = document.documentElement,
