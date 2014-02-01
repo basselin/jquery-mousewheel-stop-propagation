@@ -1,5 +1,5 @@
 /*!
- * jquery.stopScrollingPropagation.js v1.0.0
+ * mousewheelStopPropagation.js v1.0.0
  * (c) 2014, Benoit Asselin contact(at)ab-d.fr
  * MIT Licence
  */
