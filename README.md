@@ -3,7 +3,7 @@ $.mousewheelStopPropagation()
 
 This jQuery plugin can prevent scrolling of parent element, or stop propagation with mousewheel event listener.
 
-*Compatibilities: Micorsoft Internet Explorer, Google Chrome, Mozilla Firefox, Apple Safari...*
+*Compatibilities: Microsoft Internet Explorer, Google Chrome, Mozilla Firefox, Apple Safari...*
 
 Usage
 -----
