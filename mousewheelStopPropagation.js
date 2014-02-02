@@ -13,6 +13,8 @@
 			wheelstop: null // Function
 			}, options);
 		
+		// Compatibilities
+		var isMsIE = ('Microsoft Internet Explorer' === navigator.appName);
 		var docElt = document.documentElement,
 		    mousewheelEventName = 'mousewheel';
 		if('onmousewheel' in docElt) {
@@ -24,14 +26,13 @@
 		}
 		if(!mousewheelEventName) { return this; }
 		
-		var mousewheelPrevent = function(event) {
+		function mousewheelPrevent(event) {
 			event.preventDefault();
 			event.stopPropagation();
 			if('function' === typeof options.wheelstop) {
 				options.wheelstop(event);
 			}
-		};
-		var isMsIE = ('Microsoft Internet Explorer' === navigator.appName);
+		}
 		
 		return this.each(function() {
 			var _this = this,
@@ -59,7 +60,6 @@
 					}
 				}
 			});
-			
 		});
 	};
 	
