@@ -1,5 +1,5 @@
 /*!
- * mousewheelStopPropagation.js v1.0.0
+ * mousewheelStopPropagation.js v1.1.0
  * (c) 2014, Benoit Asselin contact(at)ab-d.fr
  * MIT Licence
  */
@@ -36,36 +36,30 @@
 		return this.each(function() {
 			var _this = this,
 			    $this = $(_this);
-			if(!isMsIE) {
-				$this.on(mousewheelEventName, function(event) {
-					var origiEvent = event.originalEvent;
-					var scrollTop = _this.scrollTop,
-					    scrollMax = _this.scrollHeight - $this.outerHeight(),
-					    delta = -origiEvent.wheelDelta;
-					if(isNaN(delta)) {
-						delta = origiEvent.deltaY;
-					}
-					if((scrollTop <= 0 && delta < 0) || (scrollTop >= scrollMax && delta > 0)) {
+			$this.on(mousewheelEventName, function(event) {
+				var origiEvent = event.originalEvent;
+				var scrollTop = _this.scrollTop,
+				    scrollMax = _this.scrollHeight - $this.outerHeight(),
+				    delta = -origiEvent.wheelDelta;
+				if(isNaN(delta)) {
+					delta = origiEvent.deltaY;
+				}
+				var scrollUp = delta < 0;
+				if((scrollUp && scrollTop <= 0) || (!scrollUp && scrollTop >= scrollMax)) {
+					mousewheelPrevent(event);
+				} else if(isMsIE) {
+					// Fix Internet Explorer and emulate natural scrolling
+					var animOpt = { duration:200, easing:'linear' };
+					if(scrollUp && -delta > scrollTop) {
+						$this.stop(true).animate({ scrollTop:0 }, animOpt);
+						mousewheelPrevent(event);
+					} else if(!scrollUp && delta > scrollMax - scrollTop) {
+						$this.stop(true).animate({ scrollTop:scrollMax }, animOpt);
 						mousewheelPrevent(event);
 					}
-				});
-			} else {
-				$this.on(mousewheelEventName, function(event) {
-					var origiEvent = event.originalEvent;
-					var scrollTop = _this.scrollTop,
-					    scrollHeight = _this.scrollHeight,
-					    scrollMax = scrollHeight - $this.outerHeight(),
-					    delta = -origiEvent.wheelDelta;
-					if(-delta > scrollTop && delta < 0) {
-						$this.scrollTop(0);
-						mousewheelPrevent(event);
-					} else if(delta > scrollMax - scrollTop && delta > 0) {
-						//$this.scrollTop(scrollMax);
-						$this.scrollTop(scrollHeight);
-						mousewheelPrevent(event);
-					}
-				});
-			}
+				}
+			});
+			
 		});
 	};
 	
