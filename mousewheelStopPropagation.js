@@ -1,5 +1,5 @@
 /*!
- * mousewheelStopPropagation.js v1.1.0
+ * mousewheelStopPropagation.js v1.2.0
  * (c) 2014, Benoit Asselin contact(at)ab-d.fr
  * MIT Licence
  */
@@ -14,7 +14,8 @@
 			}, options);
 		
 		// Compatibilities
-		var isMsIE = ('Microsoft Internet Explorer' === navigator.appName);
+		var ua = navigator.userAgent,
+		    isMsIE = (-1 !== ua.indexOf('Trident') || -1 !== ua.indexOf('MSIE'));
 		var docElt = document.documentElement,
 		    mousewheelEventName = 'mousewheel';
 		if('onmousewheel' in docElt) {
