@@ -14,8 +14,8 @@
 			}, options);
 		
 		// Compatibilities
-		var ua = navigator.userAgent,
-		    isMsIE = (-1 !== ua.indexOf('Trident') || -1 !== ua.indexOf('MSIE'));
+		var ua = navigator.userAgent.toLowerCase(),
+		    isMsIE = /(trident|msie)/.test(ua);
 		var docElt = document.documentElement,
 		    mousewheelEventName = 'mousewheel';
 		if('onmousewheel' in docElt) {
