@@ -1,7 +1,7 @@
 /*!
  * mousewheelStopPropagation.js v1.2.0
  * (c) 2014, Benoit Asselin contact(at)ab-d.fr
- * MIT Licence
+ * MIT License
  */
  
 ;(function($, window, undefined) {
