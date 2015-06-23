@@ -6,11 +6,14 @@
  
 ;(function($, window, undefined) {
 	'use strict';
-	
+
+	var animOpt = { duration:200, easing:'linear' };
+
 	$.fn.mousewheelStopPropagation = function(options) {
 		options = $.extend({
 			// defaults
-			wheelstop: null // Function
+			wheelstop: null, // Function
+			emulateNaturalScrolling: true
 			}, options);
 		
 		// Compatibilities
@@ -34,6 +37,14 @@
 				options.wheelstop(event);
 			}
 		}
+
+		function emulateNaturalScrollIfNecessary($container, scrollTop) {
+			if (options.emulateNaturalScrolling) {
+				$container.stop(true).animate({scrollTop: scrollTop}, animOpt);
+			} else {
+				$container.get(0).scrollTop = scrollTop;
+			}
+		}
 		
 		return this.each(function() {
 			var _this = this,
@@ -50,13 +61,11 @@
 				if((scrollUp && scrollTop <= 0) || (!scrollUp && scrollTop >= scrollMax)) {
 					mousewheelPrevent(event);
 				} else if(isMsIE) {
-					// Fix Internet Explorer and emulate natural scrolling
-					var animOpt = { duration:200, easing:'linear' };
 					if(scrollUp && -delta > scrollTop) {
-						$this.stop(true).animate({ scrollTop:0 }, animOpt);
+						emulateNaturalScrollIfNecessary($this, 0);
 						mousewheelPrevent(event);
 					} else if(!scrollUp && delta > scrollMax - scrollTop) {
-						$this.stop(true).animate({ scrollTop:scrollMax }, animOpt);
+						emulateNaturalScrollIfNecessary($this, scrollMax);
 						mousewheelPrevent(event);
 					}
 				}
