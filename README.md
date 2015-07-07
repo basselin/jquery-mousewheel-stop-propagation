@@ -25,4 +25,5 @@ Options
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
 | `wheelstop` | The scroll was stopped. | Function | `null` |
+| `emulateNaturalScrolling` | Emulate natural scrolling for IE | Boolean | `false` |
 
