@@ -2,7 +2,7 @@
   "name": "jquery-mousewheel-stop-propagation",
   "title": "$.mousewheelStopPropagation()",
   "description": "This jQuery plugin can prevent the scrolling of parent elements, or stop the propagation with the mousewheel event listener.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "license": "MIT",
   "main": "mousewheelStopPropagation.js",
   "author": {
@@ -13,8 +13,8 @@
     "jquery": ">=1.11.0"
   },
   "devDependencies": {
-    "grunt": "^0.4.4",
-    "grunt-contrib-uglify": "^0.4.0"
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "~0.9.1"
   },
   "repository": {
     "type": "git",
