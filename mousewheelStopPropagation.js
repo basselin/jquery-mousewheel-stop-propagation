@@ -1,6 +1,6 @@
 /*!
- * mousewheelStopPropagation.js v1.3.0
- * (c) 2014, Benoit Asselin contact(at)ab-d.fr
+ * mousewheelStopPropagation.js v1.3.1
+ * (c) 2017 - 161 SARL - https://161.io
  * MIT License
  */
 

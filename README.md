@@ -9,7 +9,7 @@ Usage
 -----
 
 ```html
-<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="mousewheelStopPropagation.js"></script>
 <script>
 $(function(){
